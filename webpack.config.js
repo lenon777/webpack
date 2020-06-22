@@ -3,16 +3,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const ENV = process.env.APP_ENV;
-const isTest = ENV === 'test'
 const isProd = ENV === 'prod';
 
-function setDevTool() { 
-    if (isTest) {
-      return 'inline-source-map';
-    } else if (isProd) {
-      return 'source-map';
+function setDevTool() {
+    if (isProd) {
+        return 'source-map';
     } else {
-      return 'eval-source-map';
+        return 'eval-source-map';
     }
 }
 
